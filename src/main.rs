@@ -3,10 +3,8 @@ use bevy::{
     prelude::*,
     window::{PresentMode, WindowMode},
 };
-use bevy_editor_pls::EditorPlugin;
 use bevy_rapier3d::prelude::*;
 
-mod camera;
 mod exit;
 mod player;
 mod scene;
@@ -16,7 +14,6 @@ struct GamePlugins;
 impl PluginGroup for GamePlugins {
     fn build(self) -> PluginGroupBuilder {
         PluginGroupBuilder::start::<Self>()
-            .add(camera::CameraPlugin)
             .add(scene::ScenePlugin)
             .add(player::PlayerPlugin)
     }
@@ -28,7 +25,6 @@ impl PluginGroup for OtherPlugins {
     fn build(self) -> PluginGroupBuilder {
         PluginGroupBuilder::start::<Self>()
             .add(exit::ExitPlugin::default())
-            .add(EditorPlugin::default())
             .add(RapierPhysicsPlugin::<NoUserData>::default())
     }
 }

@@ -5,7 +5,7 @@ pub(super) struct ScenePlugin;
 
 impl Plugin for ScenePlugin {
     fn build(&self, app: &mut App) {
-        app.add_startup_system(setup);       
+        app.add_systems(Startup, setup);       
     }
 }
 

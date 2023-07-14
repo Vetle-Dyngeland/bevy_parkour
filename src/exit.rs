@@ -11,7 +11,7 @@ pub struct ExitPlugin {
 impl Default for ExitPlugin {
     fn default() -> Self {
         Self {
-            keys: vec![KeyCode::LControl, KeyCode::L],
+            keys: vec![KeyCode::ControlLeft, KeyCode::L],
             reset_timer_duration: Duration::from_secs_f32(0.5f32),
             press_count: 1usize,
         }
@@ -25,7 +25,7 @@ impl Plugin for ExitPlugin {
             keys: self.keys.clone(),
             press_count: self.press_count,
         })
-        .add_system(exit_system);
+        .add_systems(Update, exit_system);
     }
 }
 
