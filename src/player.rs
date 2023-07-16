@@ -12,7 +12,7 @@ impl Plugin for PlayerPlugin {
     fn build(&self, app: &mut App) {
         app.add_plugins(PlayerSystemSetPlugin)
             .add_plugins(PlayerPlugins)
-            .add_systems(PreStartup, init);
+            .add_systems(PreStartup, init.in_set(PlayerStartupSet::Main));
     }
 }
 
