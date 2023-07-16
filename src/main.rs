@@ -32,17 +32,19 @@ impl PluginGroup for OtherPlugins {
 fn main() {
     App::new()
         .insert_resource(ClearColor(Color::rgb_u8(10, 10, 10)))
-        .add_plugins(DefaultPlugins.set(WindowPlugin {
-            primary_window: Some(Window {
-                title: "Bevy parkour game".to_string(),
-                present_mode: PresentMode::AutoNoVsync,
-                mode: WindowMode::BorderlessFullscreen,
-                resolution: (1920f32, 1080f32).into(),
+        .add_plugins((
+            DefaultPlugins.set(WindowPlugin {
+                primary_window: Some(Window {
+                    title: "Bevy parkour game".to_string(),
+                    present_mode: PresentMode::AutoNoVsync,
+                    mode: WindowMode::BorderlessFullscreen,
+                    resolution: (1920f32, 1080f32).into(),
+                    ..Default::default()
+                }),
                 ..Default::default()
             }),
-            ..Default::default()
-        }))
-        .add_plugins(GamePlugins)
-        .add_plugins(OtherPlugins)
+            GamePlugins,
+            OtherPlugins,
+        ))
         .run();
 }
